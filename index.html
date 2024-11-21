@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrik-Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lyrik-Test</h1>
+    <p>Teste dein Wissen über Lyrik! Beantworte die Fragen und finde heraus, wie gut du dich auskennst.</p>
+
+    <form id="lyrikTest">
+        <div class="question">
+            <p>1. Welche Textform gehört zur Lyrik?</p>
+            <input type="radio" id="frage1a" name="q1" value="0">
+            <label for="frage1a">Roman</label><br>
+            <input type="radio" id="frage1b" name="q1" value="1">
+            <label for="frage1b">Gedicht</label><br>
+            <input type="radio" id="frage1c" name="q1" value="0">
+            <label for="frage1c">Zeitungsartikel</label>
+        </div>
+
+        <div class="question">
+            <p>2. Was ist ein Reim?</p>
+            <input type="radio" id="frage2a" name="q2" value="1">
+            <label for="frage2a">Wörter, die sich am Ende ähnlich klingen</label><br>
+            <input type="radio" id="frage2b" name="q2" value="0">
+            <label for="frage2b">Ein langer Text ohne Struktur</label><br>
+            <input type="radio" id="frage2c" name="q2" value="0">
+            <label for="frage2c">Ein Titel eines Gedichts</label>
+        </div>
+
+        <div class="question">
+            <p>3. Wofür wird Lyrik oft verwendet?</p>
+            <input type="radio" id="frage3a" name="q3" value="0">
+            <label for="frage3a">Um wissenschaftliche Ergebnisse zu präsentieren</label><br>
+            <input type="radio" id="frage3b" name="q3" value="1">
+            <label for="frage3b">Um Gefühle und Gedanken auszudrücken</label><br>
+            <input type="radio" id="frage3c" name="q3" value="0">
+            <label for="frage3c">Um Geschichten zu erzählen</label>
+        </div>
+
+        <div class="question">
+            <p>4. Was ist ein Haiku?</p>
+            <input type="radio" id="frage4a" name="q4" value="1">
+            <label for="frage4a">Ein japanisches Kurzgedicht</label><br>
+            <input type="radio" id="frage4b" name="q4" value="0">
+            <label for="frage4b">Ein langer Roman</label><br>
+            <input type="radio" id="frage4c" name="q4" value="0">
+            <label for="frage4c">Ein musikalisches Werk</label>
+        </div>
+
+        <button type="button" onclick="submitTest()">Test abschließen</button>
+    </form>
+
+    <h2 id="resultsTitle" style="display: none;">Ergebnis:</h2>
+    <p id="results" style="font-size: 18px;"></p>
+
+    <script>
+        function submitTest() {
+            let score = 0;
+
+            // Antworten auswerten
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+
+            if (q1) score += parseInt(q1.value);
+            if (q2) score += parseInt(q2.value);
+            if (q3) score += parseInt(q3.value);
+            if (q4) score += parseInt(q4.value);
+
+            // Ergebnis anzeigen
+            const resultsTitle = document.getElementById("resultsTitle");
+            const results = document.getElementById("results");
+
+            resultsTitle.style.display = "block";
+            if (score === 4) {
+                results.textContent = `Perfekt! Du hast ${score} von 4 Punkten. Du kennst dich in der Lyrik sehr gut aus!`;
+            } else if (score >= 2) {
+                results.textContent = `Gut gemacht! Du hast ${score} von 4 Punkten. Du weißt schon einiges über Lyrik.`;
+            } else {
+                results.textContent = `Du hast ${score} von 4 Punkten. Es lohnt sich, noch mehr über Lyrik zu lernen. 😊`;
+            }
+        }
+    </script>
+</body>
+</html>
